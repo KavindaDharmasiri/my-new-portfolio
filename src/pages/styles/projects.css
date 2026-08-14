@@ -1,33 +1,165 @@
-.projects-logo-container {
-	display: flex;
-	justify-content: left;
-	padding-top: 25px;
+/* ============================================================
+   Obsidian Prime — Projects page
+   ============================================================ */
+
+.obsidian-projects-main {
+	gap: 0;
 }
 
-.projects-logo {
-	display: flex;
-	position: fixed;
-	border: 1px solid white;
-	border-radius: 50%;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-	top: 4vh;
-	z-index: 999;
+.obsidian-projects-hero {
+	margin-bottom: 80px;
+	max-width: 48rem;
 }
 
-.projects-container {
+.obsidian-projects-title {
+	margin-bottom: 24px;
+}
+
+.obsidian-projects-desc {
+	max-width: 42rem;
+	line-height: 1.625;
+}
+
+/* ============================================================
+   Project cards
+   ============================================================ */
+.obsidian-projects-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 32px;
+}
+
+.obsidian-project {
+	background: var(--surface-slate);
+	border-radius: 1.5rem;
+	padding: 32px;
 	display: flex;
 	flex-direction: column;
-	height: 100%;
-	margin: 0;
-	padding-top: 120px;
+	border: 1px solid transparent;
+	position: relative;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	box-shadow: 0 0 0 0 rgba(134, 209, 237, 0);
 }
 
-@media (max-width: 600px) {
-	.projects-container {
-		padding-top: 60px;
+.obsidian-project:hover {
+	border-color: var(--accent);
+	box-shadow: 0 0 40px 0 var(--glow-color);
+	transform: translateY(-2px);
+}
+
+.obsidian-project-icon {
+	width: 48px;
+	height: 48px;
+	border-radius: 0.75rem;
+	background: var(--bg);
+	border: 1px solid var(--border-subtle);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--accent);
+	margin-bottom: 24px;
+}
+
+.obsidian-project-icon .material-symbols-outlined {
+	font-variation-settings: "FILL" 1;
+}
+
+.obsidian-project-title {
+	font-family: var(--font-display);
+	font-size: clamp(22px, 3vw, 28px);
+	line-height: 1.2;
+	font-weight: 700;
+	color: var(--on-surface);
+	margin: 0 0 16px;
+	transition: color 0.3s ease;
+}
+
+.obsidian-project:hover .obsidian-project-title {
+	color: var(--accent);
+}
+
+.obsidian-project-desc {
+	font-size: 16px;
+	line-height: 1.6;
+	color: var(--on-surface-variant);
+	margin: 0 0 24px;
+	flex-grow: 1;
+}
+
+/* Tech chips */
+.obsidian-project-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 32px;
+}
+
+.obsidian-chip {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	padding: 4px 12px;
+	border-radius: 9999px;
+	background: rgba(134, 209, 237, 0.1);
+	color: var(--accent);
+}
+
+/* Card actions */
+.obsidian-project-actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-top: auto;
+	border-top: 1px solid var(--border-subtle);
+	padding-top: 24px;
+}
+
+.obsidian-project-action {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: var(--on-surface);
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	transition: color 0.3s ease;
+}
+
+.obsidian-project-action:hover {
+	color: var(--accent);
+}
+
+.obsidian-project-action .material-symbols-outlined {
+	font-size: 18px;
+}
+
+.obsidian-project-action-spacer {
+	margin-left: auto;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 1024px) {
+	.obsidian-projects-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 640px) {
+	.obsidian-projects-grid {
+		grid-template-columns: 1fr;
 	}
 
-	.projects-project {
-		width: calc(100% / 2);
+	.obsidian-projects-hero {
+		margin-bottom: 48px;
 	}
 }

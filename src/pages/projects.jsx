@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 
-import NavBar from "../components/common/navBar";
-import Footer from "../components/common/footer";
-import Logo from "../components/common/logo";
-import AllProjects from "../components/projects/allProjects";
+import RedesignNav from "../components/redesign/RedesignNav";
+import RedesignFooter from "../components/redesign/RedesignFooter";
 
 import INFO from "../data/user";
 import SEO from "../data/seo";
 
+import "../components/redesign/redesign.css";
 import "./styles/projects.css";
 
 const Projects = () => {
@@ -19,7 +18,7 @@ const Projects = () => {
 	const currentSEO = SEO.find((item) => item.page === "projects");
 
 	return (
-		<React.Fragment>
+		<div className="obsidian">
 			<Helmet>
 				<title>{`Projects | ${INFO.main.title}`}</title>
 				<meta name="description" content={currentSEO.description} />
@@ -29,43 +28,102 @@ const Projects = () => {
 				/>
 			</Helmet>
 
-			<div className="page-content">
-				<NavBar active="projects" />
-				<div className="content-wrapper">
-					<div className="projects-logo-container">
-						<div className="projects-logo">
-							<Logo width={46} />
-						</div>
-					</div>
-					<div className="projects-container">
-						<div className="title projects-title">
-							Things I’ve made trying to put my dent in the
-							universe.
-						</div>
+			<RedesignNav />
 
-						<div className="subtitle projects-subtitle">
-							I've worked on a variety of projects over the years
-							and I'm proud of the progress I've made. Many of
-							these projects are open-source and available for
-							others to explore and contribute to. If you're
-							interested in any of the projects I've worked on,
-							please feel free to check out the code and suggest
-							any improvements or enhancements you might have in
-							mind. Collaborating with others is a great way to
-							learn and grow, and I'm always open to new ideas and
-							feedback.
-						</div>
+			<main className="obsidian-main obsidian-projects-main">
+				<header className="obsidian-projects-hero">
+					<h1 className="obsidian-display obsidian-projects-title">
+						Featured Projects
+					</h1>
+					<p className="obsidian-body obsidian-projects-desc">
+						A curated selection of robust, scalable applications and
+						digital solutions I&apos;ve architected and built. From
+						complex enterprise systems to intuitive consumer apps,
+						showcasing technical depth and modern engineering
+						practices.
+					</p>
+				</header>
 
-						<div className="projects-list">
-							<AllProjects />
-						</div>
-					</div>
-					<div className="page-footer">
-						<Footer />
-					</div>
+				<div className="obsidian-projects-grid">
+					{INFO.projects.map((p, i) => {
+						const actions = [];
+						if (p.link) {
+							actions.push({
+								label: "View Project",
+								icon: "open_in_new",
+								href: p.link,
+							});
+						}
+						if (p.github) {
+							actions.push({
+								label: "Repo",
+								icon: "code",
+								href: p.github,
+								spacer: true,
+							});
+						}
+
+						return (
+							<article
+								key={i}
+								className="obsidian-project"
+							>
+								<div className="obsidian-project-icon">
+									<span className="material-symbols-outlined">
+										{p.icon || "folder"}
+									</span>
+								</div>
+
+								<h3 className="obsidian-project-title">
+									{p.title}
+								</h3>
+								<p className="obsidian-project-desc">
+									{p.description}
+								</p>
+
+								{(p.tech || []).length > 0 && (
+									<div className="obsidian-project-chips">
+										{p.tech.map((t) => (
+											<span
+												key={t}
+												className="obsidian-chip"
+											>
+												{t}
+											</span>
+										))}
+									</div>
+								)}
+
+								{actions.length > 0 && (
+									<div className="obsidian-project-actions">
+										{actions.map((a) => (
+											<a
+												key={a.label}
+												href={a.href}
+												target="_blank"
+												rel="noreferrer"
+												className={`obsidian-project-action ${
+													a.spacer
+														? "obsidian-project-action-spacer"
+														: ""
+												}`}
+											>
+												<span className="material-symbols-outlined">
+													{a.icon}
+												</span>
+												{a.label}
+											</a>
+										))}
+									</div>
+								)}
+							</article>
+						);
+					})}
 				</div>
-			</div>
-		</React.Fragment>
+			</main>
+
+			<RedesignFooter />
+		</div>
 	);
 };
 

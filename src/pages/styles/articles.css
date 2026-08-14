@@ -1,52 +1,443 @@
-.articles-logo-container {
-	display: flex;
-	justify-content: left;
-	padding-top: 25px;
+/* ============================================================
+   Obsidian Prime — Articles / Journal page
+   ============================================================ */
+
+.obsidian-articles-main {
+	gap: 0;
 }
 
-.articles-logo {
-	display: flex;
-	position: fixed;
-	border: 1px solid white;
-	border-radius: 50%;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-	top: 4vh;
+/* ============================================================
+   Hero
+   ============================================================ */
+.obsidian-articles-hero {
+	max-width: 48rem;
+	margin-bottom: var(--section-gap);
 }
 
-.articles-main-container {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
+.obsidian-articles-hero .obsidian-display {
+	margin-bottom: var(--stack-md);
+}
+
+.obsidian-articles-hero-desc {
+	font-size: 18px;
+	line-height: 1.6;
+	font-weight: 400;
+	color: var(--on-surface-variant);
+	max-width: 40rem;
 	margin: 0;
-	padding-top: 120px;
 }
 
-.articles-container {
-	display: flex;
-	flex-direction: column;
+/* ============================================================
+   Featured article
+   ============================================================ */
+.obsidian-featured {
+	display: block;
+	background: var(--surface-slate);
+	border-radius: 1.5rem;
+	overflow: hidden;
+	border: 1px solid transparent;
+	text-decoration: none;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.articles-wrapper {
-	padding-top: 50px;
-	padding-bottom: 50px;
-	display: flex;
-	flex-direction: column;
+.obsidian-featured:hover {
+	border-color: var(--primary);
+	box-shadow: 0 0 40px rgba(184, 234, 255, 0.15);
 }
 
-.articles-article {
-	padding-top: 0px;
-	padding-left: 35px;
-	padding-bottom: 20px;
-	border-left: 2px solid #f4f4f5;
+.obsidian-featured-image {
+	height: 400px;
 	width: 100%;
+	background-size: cover;
+	background-position: center;
+}
+
+.obsidian-featured-body {
+	padding: 48px;
+}
+
+.obsidian-article-meta {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 16px;
+}
+
+.obsidian-articles-title {
+	font-family: var(--font-display);
+	font-size: clamp(24px, 4vw, 32px);
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	font-weight: 700;
+	color: var(--on-surface);
+	margin: 0 0 16px;
+	transition: color 0.3s ease;
+}
+
+.obsidian-featured:hover .obsidian-articles-title {
+	color: var(--primary);
+}
+
+.obsidian-articles-desc {
+	font-size: 16px;
+	line-height: 1.6;
+	font-weight: 400;
+	color: var(--text-muted);
+	margin: 0 0 24px;
+	max-width: 44rem;
+}
+
+.obsidian-articles-desc:last-child {
+	margin-bottom: 0;
+}
+
+.obsidian-featured .obsidian-read-link {
+	font-weight: 700;
+	transition: transform 0.3s ease;
+}
+
+.obsidian-featured:hover .obsidian-read-link {
+	transform: translateX(8px);
+}
+
+/* ============================================================
+   Layout grid
+   ============================================================ */
+.obsidian-articles-layout {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: 32px;
+	margin-top: var(--section-gap);
+}
+
+.obsidian-articles-list-col {
+	grid-column: span 8;
+}
+
+.obsidian-articles-side {
+	grid-column: span 4;
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
+}
+
+.obsidian-articles-list-title {
+	font-family: var(--font-display);
+	font-size: clamp(22px, 3vw, 28px);
+	line-height: 1.2;
+	font-weight: 700;
+	color: var(--on-surface);
+	margin: 0 0 var(--stack-md);
+	padding-bottom: 16px;
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ============================================================
+   Recent article cards
+   ============================================================ */
+.obsidian-articles-list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--stack-md);
+}
+
+.obsidian-articles-card {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	padding: 24px;
+	border-radius: 0.75rem;
+	background: var(--surface-slate);
+	border: 1px solid transparent;
+	text-decoration: none;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.obsidian-articles-card:hover {
+	border-color: var(--primary);
+	box-shadow: 0 0 40px rgba(184, 234, 255, 0.1);
+}
+
+.obsidian-articles-thumb {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	border-radius: 0.5rem;
+	overflow: hidden;
+	background: var(--surface-container);
+	flex-shrink: 0;
+}
+
+.obsidian-articles-thumb-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s ease;
+}
+
+.obsidian-articles-card:hover .obsidian-articles-thumb-img {
+	transform: scale(1.05);
+}
+
+.obsidian-articles-card-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.obsidian-articles-card-meta {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 8px;
+}
+
+.obsidian-articles-date {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	color: var(--secondary);
+}
+
+.obsidian-dot {
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background: var(--border-subtle);
+	flex-shrink: 0;
+}
+
+.obsidian-articles-cat {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: var(--text-muted);
+}
+
+.obsidian-articles-card-title {
+	font-size: 20px;
+	line-height: 1.3;
+	font-weight: 700;
+	color: var(--on-surface);
+	margin: 0 0 8px;
+	transition: color 0.2s ease;
+}
+
+.obsidian-articles-card:hover .obsidian-articles-card-title {
+	color: var(--primary);
+}
+
+.obsidian-articles-card-desc {
+	font-size: 14px;
+	line-height: 1.6;
+	font-weight: 400;
+	color: var(--text-muted);
+	margin: 0 0 16px;
+}
+
+.obsidian-articles-card-read {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: var(--text-muted);
+	font-size: 14px;
+	line-height: 1.4;
+	font-weight: 500;
+	margin-top: auto;
+}
+
+.obsidian-articles-card-read .material-symbols-outlined {
+	font-size: 16px;
+}
+
+/* ============================================================
+   Load more
+   ============================================================ */
+.obsidian-load-more {
+	display: block;
+	margin: 48px auto 0;
+	background: transparent;
+	border: 1px solid var(--border-subtle);
+	color: var(--on-surface);
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	padding: 12px 24px;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.obsidian-load-more:hover {
+	background: var(--surface-slate);
+	border-color: var(--primary);
+}
+
+/* ============================================================
+   Sidebar
+   ============================================================ */
+.obsidian-articles-side-title {
+	font-size: 20px;
+	line-height: 1.3;
+	font-weight: 700;
+	color: var(--on-surface);
+	margin: 0 0 24px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+.obsidian-topics-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.obsidian-topic {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	padding: 4px 12px;
+	border-radius: 9999px;
+	border: 1px solid;
+	cursor: pointer;
+	transition: background 0.2s ease;
+}
+
+.obsidian-topic-primary {
+	background: rgba(184, 234, 255, 0.1);
+	color: var(--primary-container);
+	border-color: rgba(184, 234, 255, 0.2);
+}
+
+.obsidian-topic-primary:hover {
+	background: rgba(184, 234, 255, 0.2);
+}
+
+.obsidian-topic-secondary {
+	background: rgba(79, 219, 200, 0.1);
+	color: var(--secondary);
+	border-color: rgba(79, 219, 200, 0.2);
+}
+
+.obsidian-topic-secondary:hover {
+	background: rgba(79, 219, 200, 0.2);
+}
+
+.obsidian-subscribe {
+	background: var(--surface-slate);
+	border-radius: 1.5rem;
+	padding: 32px;
+	border: 1px solid var(--border-subtle);
+}
+
+.obsidian-subscribe-text {
+	font-size: 14px;
+	line-height: 1.6;
+	font-weight: 400;
+	color: var(--text-muted);
+	margin: 0 0 24px;
+}
+
+.obsidian-subscribe-form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.obsidian-subscribe-input {
+	width: 100%;
+	background: var(--bg);
+	border: 1px solid var(--border-subtle);
+	color: var(--on-surface);
+	font-family: var(--font-body);
+	font-size: 16px;
+	line-height: 1.6;
+	padding: 12px 16px;
+	border-radius: 0.5rem;
+	outline: none;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	box-sizing: border-box;
+}
+
+.obsidian-subscribe-input::placeholder {
+	color: var(--text-muted);
+}
+
+.obsidian-subscribe-input:focus {
+	border-color: var(--primary);
+	box-shadow: 0 0 0 1px var(--primary);
+}
+
+.obsidian-subscribe-btn {
+	width: 100%;
+	background: var(--primary-container);
+	color: var(--bg);
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 12px 24px;
+	border-radius: 0.5rem;
+	border: none;
+	cursor: pointer;
+	transition: transform 0.15s ease, opacity 0.3s ease;
+}
+
+.obsidian-subscribe-btn:hover {
+	opacity: 0.9;
+}
+
+.obsidian-subscribe-btn:active {
+	transform: scale(0.98);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (min-width: 769px) {
+	.obsidian-articles-card {
+		flex-direction: row;
+	}
+
+	.obsidian-articles-thumb {
+		width: 33.333%;
+		aspect-ratio: 1;
+	}
 }
 
 @media (max-width: 1024px) {
-	.articles-title {
-		width: 100% !important;
+	.obsidian-articles-layout {
+		grid-template-columns: 1fr;
 	}
 
-	.articles-subtitle {
-		width: 100% !important;
+	.obsidian-articles-list-col,
+	.obsidian-articles-side {
+		grid-column: span 1;
+	}
+
+	.obsidian-articles-side {
+		margin-top: 48px;
+	}
+}
+
+@media (max-width: 768px) {
+	.obsidian-featured-image {
+		height: 260px;
+	}
+
+	.obsidian-featured-body {
+		padding: 32px 24px;
 	}
 }

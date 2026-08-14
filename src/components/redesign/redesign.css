@@ -1,0 +1,410 @@
+/* ============================================================
+   Obsidian Prime — shared design system for redesigned pages
+   (tokens, typography, top nav, footer, common elements)
+   ============================================================ */
+
+.obsidian {
+	/* ------- colors ------- */
+	--bg: #131313;
+	--surface-lowest: #0e0e0e;
+	--surface-slate: #1c1c1e;
+	--surface-low: #1c1b1b;
+	--surface-container: #201f1f;
+	--surface-high: #2a2a2a;
+	--surface-highest: #353534;
+	--surface-variant: #353534;
+	--border-subtle: #2c2c2e;
+	--outline: #899297;
+	--outline-variant: #3f484c;
+	--on-surface: #e5e2e1;
+	--on-surface-variant: #bfc8cd;
+	--text-muted: #a1a1aa;
+	--primary: #b8eaff;
+	--primary-container: #86d1ed;
+	--on-primary: #003543;
+	--on-primary-container: #005a70;
+	--on-primary-fixed: #001f28;
+	--accent: #86d1ed;
+	--secondary: #4fdbc8;
+	--glow-color: rgba(134, 209, 237, 0.15);
+	/* ---------------------- */
+
+	/* ------- fonts ------- */
+	--font-display: "Hanken Grotesk", sans-serif;
+	--font-body: "Inter", sans-serif;
+	--font-mono: "JetBrains Mono", monospace;
+	/* --------------------- */
+
+	/* ------- layout ------- */
+	--container-max: 1200px;
+	--gutter: 2rem;
+	--margin-mobile: 1.5rem;
+	--section-gap: 8rem;
+	--stack-sm: 0.5rem;
+	--stack-md: 1.5rem;
+	/* ---------------------- */
+
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background: var(--bg);
+	color: var(--on-surface);
+	font-family: var(--font-body);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.obsidian ::selection {
+	background: var(--primary-container);
+	color: var(--on-primary);
+}
+
+/* ============================================================
+   Material Symbols
+   ============================================================ */
+.material-symbols-outlined {
+	font-family: "Material Symbols Outlined";
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+.obsidian-display {
+	font-family: var(--font-display);
+	font-size: clamp(40px, 7vw, 64px);
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+	font-weight: 800;
+	color: var(--on-surface);
+	margin: 0;
+}
+
+.obsidian-display-sub {
+	color: var(--on-surface-variant);
+}
+
+.obsidian-heading {
+	font-family: var(--font-display);
+	font-size: clamp(24px, 4vw, 32px);
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	font-weight: 700;
+	color: var(--on-surface);
+	margin: 0;
+}
+
+.obsidian-body {
+	font-size: 16px;
+	line-height: 1.6;
+	font-weight: 400;
+	color: var(--on-surface-variant);
+	margin: 0;
+}
+
+.obsidian-caption {
+	font-size: 14px;
+	line-height: 1.4;
+	font-weight: 500;
+	margin: 0;
+}
+
+.obsidian-label {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: var(--text-muted);
+}
+
+/* ============================================================
+   Shared article elements
+   ============================================================ */
+.obsidian-chip {
+	background: rgba(184, 234, 255, 0.1);
+	color: var(--primary-container);
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	padding: 4px 12px;
+	border-radius: 9999px;
+}
+
+.obsidian-read {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: var(--text-muted);
+	font-size: 14px;
+	line-height: 1.4;
+	font-weight: 500;
+}
+
+.obsidian-read .material-symbols-outlined {
+	font-size: 16px;
+}
+
+.obsidian-read-link {
+	font-size: 14px;
+	line-height: 1.4;
+	font-weight: 500;
+	color: var(--primary);
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	margin-top: 8px;
+	transition: opacity 0.2s ease;
+}
+
+.obsidian-read-link:hover {
+	opacity: 0.8;
+}
+
+.obsidian-read-link .material-symbols-outlined {
+	font-size: 14px;
+}
+
+/* ============================================================
+   Main canvas
+   ============================================================ */
+.obsidian-main {
+	flex-grow: 1;
+	width: 100%;
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: 6rem var(--gutter) var(--section-gap);
+	display: flex;
+	flex-direction: column;
+	gap: var(--section-gap);
+}
+
+/* ============================================================
+   Top NavBar
+   ============================================================ */
+.obsidian-header {
+	position: sticky;
+	top: 0;
+	width: 100%;
+	z-index: 50;
+	background: var(--bg);
+}
+
+.obsidian-header-inner {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	height: 80px;
+	padding: 0 var(--gutter);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--stack-md);
+}
+
+.obsidian-brand {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	text-decoration: none;
+}
+
+.obsidian-brand-logo {
+	height: 40px;
+	width: auto;
+	object-fit: contain;
+}
+
+.obsidian-brand-name {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: var(--on-surface);
+	white-space: nowrap;
+}
+
+.obsidian-nav {
+	display: none;
+}
+
+.obsidian-nav-link {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: var(--on-surface-variant);
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.obsidian-nav-link:hover {
+	color: var(--primary);
+}
+
+.obsidian-nav-link.active {
+	color: var(--primary);
+	font-weight: 700;
+	border-bottom: 1px solid var(--primary);
+}
+
+.obsidian-cta {
+	background: var(--accent);
+	color: var(--on-primary-fixed);
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	padding: 8px 24px;
+	border-radius: 0.5rem;
+	border: none;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.obsidian-cta:hover {
+	transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+	.obsidian-nav {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+	}
+}
+
+/* ============================================================
+   Icon buttons
+   ============================================================ */
+.obsidian-icon-button {
+	padding: 12px;
+	border: 1px solid var(--border-subtle);
+	border-radius: 0.5rem;
+	color: var(--on-surface);
+	background: transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	cursor: pointer;
+	transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+
+.obsidian-icon-button:hover {
+	border-color: var(--accent);
+	background: var(--surface-slate);
+}
+
+.obsidian-icon-button:hover .material-symbols-outlined {
+	color: var(--accent);
+}
+
+.obsidian-icon-button:active {
+	transform: scale(0.95);
+}
+
+.obsidian-icon-button .material-symbols-outlined {
+	transition: color 0.2s ease;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.obsidian-footer {
+	border-top: 1px solid var(--outline-variant);
+	background: var(--bg);
+	margin-top: auto;
+}
+
+.obsidian-footer-inner {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	width: 100%;
+	padding: 48px var(--gutter);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--stack-md);
+}
+
+.obsidian-footer-nav {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 24px;
+}
+
+.obsidian-footer-link {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: var(--text-muted);
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.obsidian-footer-link:hover {
+	color: var(--on-surface);
+}
+
+.obsidian-footer-credit {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: var(--on-surface);
+	text-align: center;
+}
+
+@media (min-width: 769px) {
+	.obsidian-footer-inner {
+		flex-direction: row;
+	}
+}
+
+/* ============================================================
+   Shared responsive
+   ============================================================ */
+@media (max-width: 768px) {
+	.obsidian-header-inner {
+		padding: 0 var(--margin-mobile);
+	}
+
+	.obsidian-main {
+		padding: 4.5rem var(--margin-mobile) var(--section-gap);
+	}
+
+	.obsidian-footer-inner {
+		padding: 40px var(--margin-mobile);
+	}
+}

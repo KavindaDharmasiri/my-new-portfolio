@@ -1,68 +1,168 @@
-@import "../../data/styles.css";
+/* ============================================================
+   Obsidian Prime — Article reading page
+   ============================================================ */
 
-.read-article-logo-container {
-	display: flex;
-	justify-content: left;
-	padding-top: 25px;
+.obsidian-article-read {
+	max-width: 48rem;
+	gap: 0;
 }
 
-.read-article-logo {
-	display: flex;
-	position: fixed;
-	border: 1px solid white;
-	border-radius: 50%;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-	top: 4vh;
-}
-
-.read-article-container {
-	display: flex;
-	height: 100%;
-	margin: 0;
-	padding-top: 120px;
-}
-
-.read-article-back {
-	padding-top: 68px;
-	padding-right: 50px;
-	width: 40px;
-	height: 40px;
-}
-
-.read-article-back-button {
-	width: 50px;
-	border-radius: 50%;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-}
-
-.read-article-wrapper {
-	width: 80%;
-	padding-top: 30px;
-}
-
-.read-article-date-container {
-	border-left: 2px solid var(--quaternary-color);
-	color: var(--tertiary-color);
-	font-size: 16 px;
+.obsidian-article-back {
+	display: inline-flex;
 	align-items: center;
-	height: 22px;
+	gap: 8px;
+	background: transparent;
+	border: none;
+	color: var(--on-surface-variant);
+	font-size: 14px;
+	line-height: 1.4;
+	font-weight: 500;
+	cursor: pointer;
+	padding: 0;
+	margin-bottom: 48px;
+	transition: color 0.2s ease;
 }
 
-.read-article-date {
-	font-family: var(--primary-font);
-	padding-left: 15px;
+.obsidian-article-back:hover {
+	color: var(--primary);
 }
 
-.read-article-title {
-	padding-top: 50px;
-	padding-bottom: 50px;
-	width: 100% !important;
+.obsidian-article-back .material-symbols-outlined {
+	font-size: 18px;
 }
 
-.read-article-body {
-	padding-bottom: 50px;
+.obsidian-article-read-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.obsidian-article-read-meta {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 24px;
+	flex-wrap: wrap;
+}
+
+.obsidian-article-read-date {
+	color: var(--text-muted);
+}
+
+.obsidian-article-read-title {
+	font-family: var(--font-display);
+	font-size: clamp(36px, 6vw, 56px);
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+	font-weight: 800;
+	color: var(--on-surface);
+	margin: 0 0 24px;
+}
+
+.obsidian-article-read-desc {
+	font-size: 18px;
+	line-height: 1.6;
+	color: var(--on-surface-variant);
+	margin-bottom: 48px;
+}
+
+.obsidian-article-read-content {
+	border-top: 1px solid var(--border-subtle);
+	padding-top: 48px;
 	font-size: 16px;
-	line-height: 30px;
-	font-family: system-ui;
-	color: #52525b;
+	line-height: 1.75;
+	color: var(--on-surface-variant);
+}
+
+.obsidian-article-read-content h1,
+.obsidian-article-read-content h2,
+.obsidian-article-read-content h3 {
+	font-family: var(--font-display);
+	color: var(--on-surface);
+	line-height: 1.2;
+	margin: 32px 0 16px;
+}
+
+.obsidian-article-read-content h1 {
+	font-size: 28px;
+	font-weight: 800;
+}
+
+.obsidian-article-read-content h2 {
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.obsidian-article-read-content h3 {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.obsidian-article-read-content p {
+	margin: 0 0 16px;
+}
+
+.obsidian-article-read-content ul,
+.obsidian-article-read-content ol {
+	margin: 0 0 16px;
+	padding-left: 24px;
+}
+
+.obsidian-article-read-content ul {
+	list-style: disc;
+}
+
+.obsidian-article-read-content ol {
+	list-style: decimal;
+}
+
+.obsidian-article-read-content li {
+	margin-bottom: 8px;
+}
+
+.obsidian-article-read-content li:last-child {
+	margin-bottom: 0;
+}
+
+.obsidian-article-read-content pre {
+	background: var(--surface-slate);
+	border: 1px solid var(--border-subtle);
+	border-radius: 0.5rem;
+	padding: 20px;
+	overflow-x: auto;
+	margin: 24px 0;
+}
+
+.obsidian-article-read-content code {
+	font-family: var(--font-mono);
+	font-size: 13px;
+	line-height: 1.6;
+	color: var(--primary-container);
+}
+
+.obsidian-article-read-content p code,
+.obsidian-article-read-content li code {
+	background: var(--surface-slate);
+	border: 1px solid var(--border-subtle);
+	border-radius: 4px;
+	padding: 2px 6px;
+}
+
+.obsidian-article-read-content img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 0.5rem;
+}
+
+.obsidian-article-read-content .article-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 24px;
+}
+
+.obsidian-article-read-more {
+	margin-top: 48px;
+	font-size: 16px;
+	font-weight: 700;
 }
